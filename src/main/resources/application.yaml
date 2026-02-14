@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: kafka-project
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 8081  # Para não conflitar com o Kafka-UI na porta 8080
