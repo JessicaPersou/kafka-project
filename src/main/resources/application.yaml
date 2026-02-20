@@ -3,7 +3,25 @@ spring:
     name: kafka-project
 
   kafka:
+    # CORREÇÃO AQUI: bootstrap-servers (não ports-servers)
     bootstrap-servers: localhost:9092
+    admin:
+      auto-create: false
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 3
+      properties:
+        # Tempo de espera para confirmação
+        delivery.timeout.ms: 120000
+        request.timeout.ms: 30000
 
 server:
-  port: 8081  # Para não conflitar com o Kafka-UI na porta 8080
+  port: 8081
+
+logging:
+  level:
+    com.persou.store: DEBUG
+    # Para ver mais detalhes do Kafka
+    org.apache.kafka: INFO
