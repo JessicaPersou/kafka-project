@@ -3,13 +3,12 @@ spring:
     name: kafka-project
 
   kafka:
-    # CORREÇÃO AQUI: bootstrap-servers (não ports-servers)
     bootstrap-servers: localhost:9092
     admin:
       auto-create: false
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.JsonSerializer
       acks: all
       retries: 3
       properties:
